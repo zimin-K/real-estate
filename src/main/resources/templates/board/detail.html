@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/board/detail.css}">
+</head>
+<body>
+
+    <header>
+        <div th:insert="~{layout/header :: header}"></div>
+    </header>
+
+    <div id="main-content">
+        <h2>매물 상세 페이지</h2>
+
+        <div class="detail-container">
+
+            <div class="detail-board">
+                <label>제목:</label>
+                <span th:text="${boardDTO.title}"></span>
+            </div>
+            <div class="detail-board">
+                <label>주소:</label>
+                <span th:text="${boardDTO.address}"></span>
+            </div>
+            <div class="detail-board">
+                <label>평수:</label>
+                <span th:text="${boardDTO.size}"></span>
+            </div>
+            <div class="detail-board">
+                <label>가격:</label>
+                <span th:text="${boardDTO.price}"></span>
+            </div>
+            <div class="detail-board">
+                <label>내용:</label>
+                <span th:text="${boardDTO.content}"></span>
+            </div>
+            <div class="detail-board image-container">
+                <!--<label>이미지:</label>-->
+                <div th:each="imagePath : ${boardDTO.imagePaths}">
+                    <img th:src="@{|/images/${imagePath}|}" alt="게시글 이미지">
+                </div>
+            </div>
+
+            <!--   수정, 삭제   -->
+            <div class="button-wrap" th:if="${session.role == 'ADMIN'}">
+                <a class="button" th:href="@{/board/update/{bno}( bno=${boardDTO.bno} )}">수정</a>
+                <form th:action="@{/board/delete/{bno}(bno=${boardDTO.bno})}" method="post" style="display:inline;">
+                    <input type="hidden" value="delete">
+                    <button class="button" type="submit">삭제</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+<!--
+    <div id="image-modal" onclick="closeModal()">
+        <span onclick="closeModal()">&times;</span>
+        <img id="modal-img" src="">
+    </div>
+
+    <script>
+        function openModal(img) {
+            var modal = document.getElementById('image-modal');
+            var modalImg = document.getElementById('modal-img');
+            modal.style.display = "flex";
+            modalImg.src = img.src;
+        }
+
+        function closeModal() {
+            var modal = document.getElementById('image-modal');
+            modal.style.display = "none";
+        }
+    </script>-->
+</body>
+</html>

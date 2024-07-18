@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+
+<body>
+    <header th:flagment="header">
+        <div id="wrap-logo">
+            <a id="logo" onclick="location.href='/'">명 가 부 동 산</a> <hr>
+        </div>
+
+        <div id="top-menu" th:if="${session.nickname == null}">
+            <a class="login" href="/sign/login">로그인</a>
+            <a class="signup" href="/sign/signup">회원가입</a>
+            <a class="board-main" href="/board/main">매물 게시판</a>
+        </div>
+
+        <div id="top-menu2" th:unless="${session.nickname == null}">
+            <span>[[${session.nickname}]]님 환영합니다!</span>
+            <a class="board-main" href="/board/main">매물 게시판</a>
+            <form th:action="@{/logout}" method="post">
+                <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <input type="submit" value="로그아웃">
+            </form>
+        </div>
+
+    </header>
+</body>
+</html>

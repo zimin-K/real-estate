@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/board/main.css}">
+</head>
+
+<body>
+
+    <header>
+        <div th:insert="~{layout/header :: header}"></div>
+    </header>
+
+    <div id="main-wrap">
+        <h2>매물 게시판</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <td class="col-bno">No</td>
+                        <td class="col-title">제목</td>
+                        <td class="col-address">주소</td>
+                        <td class="col-size">평수</td>
+                        <td class="col-price">가격</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="board : ${boardPage.content}">
+                        <td class="col-bno" th:text="${board.bno}"></td>
+                        <td class="col-title"><a class="col-title-a" th:href="@{/board/detail/{bno}( bno=${board.bno} )}" th:text="${board.title}"></a></td>
+                        <td class="col-address" th:text="${board.address}"></td>
+                        <td class="col-size" th:text="${board.size}"></td>
+                        <td class="col-price" th:text="${board.price}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:if="${session.role == 'ADMIN'}">
+            <a th:href="@{/board/register}">
+                <button type="button" id="register-button">매물등록</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <span th:if="${boardPage.hasPrevious()}">
+            <a th:href="@{/board/main(page=${currentPage - 1})}">이전</a>
+        </span>
+        <span th:each="i : ${#numbers.sequence(0, boardPage.totalPages - 1)}">
+            <a th:href="@{/board/main(page=${i})}" th:text="${i + 1}"></a>
+        </span>
+        <span th:if="${boardPage.hasNext()}">
+            <a th:href="@{/board/main(page=${currentPage + 1})}">다음</a>
+        </span>
+    </div>
+
+</body>
+</html>

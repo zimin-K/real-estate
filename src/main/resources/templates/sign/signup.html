@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/sign/form.css}">
+</head>
+<body>
+
+    <header>
+        <div th:insert="~{layout/header :: header}"></div>
+    </header>
+
+    <h2>회원가입</h2>
+
+    <form th:action="@{/sign/signup}" method="post" th:object="${memberDTO}">
+        <div>
+            <label for="name">이름:</label>
+            <input type="text" id="name" name="name" th:field="*{name}">
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message"></div>
+        </div>
+        <div>
+            <label for="email">이메일:</label>
+            <input type="email" id="email" name="email" th:field="*{email}">
+            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-message"></div>
+        </div>
+        <div>
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" name="password" th:field="*{password}">
+            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-message"></div>
+        </div>
+        <div>
+            <label for="nickName">닉네임:</label>
+            <input type="text" id="nickName" name="nickName" th:field="*{nickName}">
+            <div th:if="${#fields.hasErrors('nickName')}" th:errors="*{nickName}" class="error-message"></div>
+        </div>
+        <div>
+            <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <input type="submit" value="회원가입">
+        </div>
+    </form>
+
+</body>
+</html>

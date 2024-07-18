@@ -1,0 +1,109 @@
+body{
+    background-color: #f4f4f4;
+}
+
+header{
+    margin-bottom: 20px;
+}
+
+#main-wrap{
+    background-color: #dad3d366;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#main-wrap h2{
+    background-color: #e2ddde;
+    padding: 10px;
+    margin-bottom: 40px;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#main-wrap table{
+    text-align: center;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto;
+}
+
+#main-wrap table thead tr td{
+    border: 1px solid black;
+    padding: 10px;
+    font-weight: bold;
+}
+
+
+#main-wrap table tbody tr td{
+    border: 1px solid;
+    padding: 10px;
+}
+
+.col-bno {
+    width: 7%;
+}
+
+.col-title {
+    width: 25%;
+}
+
+.col-title-a{
+    text-decoration: none;
+    color: black;
+}
+
+.col-address {
+    width: 43%;
+}
+
+.col-size {
+    width: 10%;
+}
+
+.col-price {
+    width: 15%;
+}
+
+#register-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #6666;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#register-button:hover {
+    background-color: #45a049;
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #6666;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.pagination a:hover {
+    background-color: #777;
+}
