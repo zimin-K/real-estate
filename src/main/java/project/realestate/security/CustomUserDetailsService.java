@@ -34,10 +34,5 @@ public class CustomUserDetailsService implements UserDetailsService {
                 Collections.singletonList(authority)
         );
 
-        /*return User.builder()
-                .username(member.getEmail())
-                .password(member.getPassword())
-                .roles(member.getRole().name())
-                .build();*/
     }
 }

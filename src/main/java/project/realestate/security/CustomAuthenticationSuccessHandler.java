@@ -24,7 +24,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         session.setAttribute("nickname", userDetails.getNickname());
         session.setAttribute("role", userDetails.getRole());
 
-        // 로그, 잘 넘어옴
+        // 로그 확인
         //System.out.println("userDetails = " + userDetails.getNickname());
         //System.out.println("userDetails = " + userDetails.getRole());
 

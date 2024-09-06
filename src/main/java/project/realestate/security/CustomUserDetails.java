@@ -29,7 +29,7 @@ public class CustomUserDetails implements UserDetails {
         return role;
     }
 
-    // 사용자의 권한 목록 반환 메서드 (구현해야됨)
+    // 사용자의 권한 목록 반환 메서드
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
