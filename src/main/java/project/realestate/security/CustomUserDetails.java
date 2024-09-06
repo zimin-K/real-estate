@@ -45,27 +45,4 @@ public class CustomUserDetails implements UserDetails {
         return password;
     }
 
-    // 사용자 계정의 만료여부, 일단 true 반환
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    // 사용자 자격이 잠겨있는지, 일단 true 반환
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    // 사용자 자격 증명 만료 여부, 일단 true 반환
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    // 사용자 계정이 활성화 되어 있는지, 일단 true 반환
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 }
